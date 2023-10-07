@@ -1,11 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setTotalQuantity } from "./cartSlice";
+import { clearCart, setTotalQuantity } from "./cartSlice";
 
 function Navbar() {
   const dispatch = useDispatch();
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const cart = useSelector((state) => state.cart.products);
+
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
 
   // En este useEffect, cada vez que se re-renderiza el cart, se calcula la totalQuantity para mostrar en la navbar
   useEffect(() => {
@@ -40,6 +44,15 @@ function Navbar() {
                 </tspan>
               </text>
             </svg>
+          </li>
+          <li>
+            <button
+              type="button"
+              className="inline-block border-2 border-gray-950 rounded-none bg-neutral-300 px-4 py-2  text-black hover:bg-neutral-500 hover:border-gray-300 hover:text-gray-100  "
+              onClick={handleClearCart}
+            >
+              Clear Cart{" "}
+            </button>
           </li>
         </ul>
       </div>

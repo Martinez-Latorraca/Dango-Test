@@ -18,7 +18,7 @@ function ProductList() {
   useEffect(() => {
     const getProducts = async () => {
       const res = await axios.get(`${import.meta.env.VITE_BACK_URL}/products`); // Este es un backend que creamos para el trabajo final en el bootcamp en Hack Academy
-      dispatch(setProducts(res.data)); // es una lista de cervezas para un e-comerce - https://unicornbeer.vercel.app/ (front) - https://unicornbeer-api.vercel.app/ (back)
+      dispatch(setProducts(res.data)); // es una lista de cervezas para un e-comerce - https://unicornbeer.vercel.app/ (front) - https://unicornbeer-api.vercel.app/products (back)
     };
     getProducts();
   }, []);
